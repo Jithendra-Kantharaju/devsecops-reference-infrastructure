@@ -1,0 +1,22 @@
+# Helm values for the official HashiCorp Vault chart.
+#   helm repo add hashicorp https://helm.releases.hashicorp.com
+#   helm install vault hashicorp/vault -n vault --create-namespace -f vault-values.yaml
+#
+# Dev mode is for demos only. For real use, set server.dev.enabled=false and
+# configure auto-unseal + HA storage.
+server:
+  dev:
+    enabled: true
+    devRootToken: "root"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+# The Agent Injector mutates pods that carry vault.hashicorp.com/* annotations
+# (see kubernetes/deployment-secure.yaml).
+injector:
+  enabled: true

@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/__tests__/gamelogic.test.ts","./src/components/board.tsx","./src/components/gamehistory.tsx","./src/components/scoreboard.tsx","./src/components/square.tsx","./src/telemetry/otel-web.ts","./src/telemetry/tracing-context.ts","./src/utils/gamelogic.ts"],"version":"5.9.3"}

@@ -1,0 +1,44 @@
+# Helm values for the Falco chart. Falco runs as a DaemonSet (one agent per node).
+#   helm repo add falcosecurity https://falcosecurity.github.io/charts
+#   helm install falco falcosecurity/falco -n falco --create-namespace -f falco-values.yaml
+#
+# Paste the contents of ../../falco/custom-rules.yaml under customRules below,
+# or apply custom-rules-configmap.yaml and reference it.
+driver:
+  kind: modern_ebpf      # no kernel headers needed on modern kernels
+
+falcosidekick:
+  enabled: true          # ships alerts onward (Slack, Datadog, etc.)
+
+customRules:
+  custom-rules.yaml: |-
+    - list: allowed_app_processes
+      items: [nginx, sh, bash, dash]
+    - list: allowed_outbound_ips
+      items: []
+    - macro: app_container
+      condition: container and container.image.repository endswith "devsecops-reference-infrastructure"
+    - rule: Unexpected Process In App Container
+      desc: A process other than the web server started in the app container
+      condition: spawned_process and app_container and not proc.name in (allowed_app_processes)
+      output: >
+        Unexpected process in app container
+        (user=%user.name command=%proc.cmdline container=%container.id image=%container.image.repository)
+      priority: WARNING
+      tags: [runtime_security, container]
+    - rule: Outbound Connection From App Container
+      desc: Outbound network connection from the app container to a non-allowlisted IP
+      condition: outbound and app_container and not fd.sip in (allowed_outbound_ips)
+      output: >
+        Outbound connection from app container
+        (connection=%fd.name user=%user.name container=%container.id)
+      priority: NOTICE
+      tags: [runtime_security, network]
+    - rule: Write To Sensitive Path In App Container
+      desc: Write under a sensitive directory in the app container
+      condition: open_write and app_container and fd.name startswith /etc
+      output: >
+        Write to sensitive path in app container
+        (file=%fd.name user=%user.name container=%container.id)
+      priority: WARNING
+      tags: [runtime_security, filesystem]

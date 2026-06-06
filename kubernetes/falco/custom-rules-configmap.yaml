@@ -1,0 +1,20 @@
+# Standalone ConfigMap alternative if you are not using the chart's customRules.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: falco-custom-rules
+  namespace: falco
+data:
+  custom-rules.yaml: |-
+    - list: allowed_app_processes
+      items: [nginx, sh, bash, dash]
+    - list: allowed_outbound_ips
+      items: []
+    - macro: app_container
+      condition: container and container.image.repository endswith "devsecops-reference-infrastructure"
+    - rule: Unexpected Process In App Container
+      desc: A process other than the web server started in the app container
+      condition: spawned_process and app_container and not proc.name in (allowed_app_processes)
+      output: "Unexpected process in app container (command=%proc.cmdline container=%container.id)"
+      priority: WARNING
+      tags: [runtime_security, container]
