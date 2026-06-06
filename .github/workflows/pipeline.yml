@@ -76,6 +76,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '20', cache: 'npm' }
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
       - uses: actions/upload-artifact@v4
         with: { name: build-artifacts, path: dist/, retention-days: 5 }
@@ -151,7 +152,11 @@ jobs:
         run: aws cloudtrail start-logging --name tic-tac-toe-trail
       - name: Emit deployment audit event
         run: |
-          aws events put-events --entries Source=github.actions,DetailType="Deployment",Detail='{"repo":"${{ github.repository }}","sha":"${{ github.sha }}"}'
+          aws events put-events --entries '[{
+            "Source": "github.actions",
+            "DetailType": "Deployment",
+            "Detail": "{\"repo\": \"${{ github.repository }}\", \"sha\": \"${{ github.sha }}\"}"
+          }]'
 
   # ---------------- FinOps ----------------
   cost-analysis:
