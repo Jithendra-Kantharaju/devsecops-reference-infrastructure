@@ -42,7 +42,7 @@ spec:
       containers:
         - name: tic-tac-toe
           # Pinned tag (never :latest). CI rewrites this on each release.
-          image: ghcr.io/jithendra-kantharaju/devsecops-reference-infrastructure:1.0.0
+          image: ghcr.io/jithendra-kantharaju/devsecops-reference-infrastructure:main
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
