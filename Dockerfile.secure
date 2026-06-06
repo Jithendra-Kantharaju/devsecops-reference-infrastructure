@@ -6,7 +6,7 @@ WORKDIR /app
 RUN addgroup -g 1001 appuser && adduser -D -u 1001 -G appuser appuser
 
 COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci && npm cache clean --force
 
 COPY . .
 RUN npm run build
