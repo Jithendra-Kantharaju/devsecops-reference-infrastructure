@@ -24,12 +24,6 @@ spec:
       labels:
         app: tic-tac-toe
         version: v1
-      annotations:
-        # Vault Agent injection. If the injector is not installed these
-        # annotations are simply ignored, so the pod still starts.
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "tic-tac-toe"
-        vault.hashicorp.com/agent-inject-secret-app-config: "secret/data/tic-tac-toe/config"
     spec:
       serviceAccountName: tic-tac-toe
       securityContext:
@@ -41,8 +35,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: tic-tac-toe
-          # Pinned tag (never :latest). CI rewrites this on each release.
-          image: ghcr.io/jithendra-kantharaju/devsecops-reference-infrastructure:1.0.0
+          image: ghcr.io/jithendra-kantharaju/devsecops-reference-infrastructure:main
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -84,8 +77,6 @@ spec:
             timeoutSeconds: 3
             failureThreshold: 3
           volumeMounts:
-            # nginx needs these writable when readOnlyRootFilesystem=true,
-            # otherwise it crash-loops on startup.
             - name: nginx-cache
               mountPath: /var/cache/nginx
             - name: nginx-run
