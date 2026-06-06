@@ -1,13 +1,13 @@
 name: DevSecOps Pipeline
 
 on:
-  #push:
-    #branches: [main, develop]
-    #paths-ignore:
+  push:
+    branches: [main, develop]
+    paths-ignore:
       - 'kubernetes/deployment-secure.yaml'
       - 'docs/**'
-  #pull_request:
-    #branches: [main]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write          # update-k8s commits the image bump
