@@ -32,7 +32,7 @@ This project showcases a complete DevSecOps architecture with:
 
 ## 🏗️ Architecture Diagram
 
-![DevSecOps Architecture](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Architecture_image.png)
+![DevSecOps Architecture](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Architecture_image.png)
 
 **Architecture Overview:**
 
@@ -52,7 +52,7 @@ The diagram illustrates the complete DevSecOps flow:
 
 ### 1. Application Running Successfully
 
-![Application](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Application.png)
+![Application](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Application.png)
 
 **Status:** ✅ Application deployed and running
 - Tic-Tac-Toe game playable at `localhost:8080`
@@ -64,7 +64,7 @@ The diagram illustrates the complete DevSecOps flow:
 
 ### 2. Argo CD GitOps Synchronization
 
-![Argo CD](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Argocd.png)
+![Argo CD](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Argocd.png)
 
 **Verification Command:**
 ```bash
@@ -80,7 +80,7 @@ kubectl -n argocd get application tic-tac-toe
 
 ### 3. AWS EKS Cluster Status
 
-![AWS EKS](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/AWS_EKS.png)
+![AWS EKS](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/AWS_EKS.png)
 
 **Verification Command:**
 ```bash
@@ -98,7 +98,7 @@ aws eks describe-cluster --name devsecops --query 'cluster.[name,status,version,
 
 ### 4. AWS CloudTrail Audit Logging
 
-![Cost-Ops](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Cost-Ops.png)
+![Cost-Ops](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Cost-Ops.png)
 
 **Verification Command:**
 ```bash
@@ -117,7 +117,7 @@ aws cloudtrail lookup-events --max-results 5 --output table
 
 ### 5. Deployment Status & Replicas
 
-![Deployment Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Deployment_Status.png)
+![Deployment Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Deployment_Status.png)
 
 **Verification Command:**
 ```bash
@@ -136,7 +136,7 @@ kubectl get deployments,pods,svc -n default
 
 ### 6. Falco Runtime Security
 
-![Falco](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Falco.png)
+![Falco](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Falco.png)
 
 **Verification Command:**
 ```bash
@@ -154,7 +154,7 @@ kubectl -n falco logs ds/falco | grep -i "unexpected process" | tail -5
 
 ### 7. GitHub Actions CI/CD Pipeline
 
-![GitOps](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/GitOps.png)
+![GitOps](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/GitOps.png)
 
 **Status:** ✅ All 8 Jobs Passing
 - Security Scanning ✅ (18s)
@@ -173,7 +173,7 @@ kubectl -n falco logs ds/falco | grep -i "unexpected process" | tail -5
 
 ### 8. Jaeger Distributed Tracing
 
-![Jaeger](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Jaeger.png)
+![Jaeger](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Jaeger.png)
 
 **Verification Command:**
 ```bash
@@ -192,7 +192,7 @@ kubectl port-forward -n datadog svc/jaeger 16686:16686
 
 ### 9. Kubernetes Resources Overview
 
-![K8s Resources](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/K8s_Resources.png)
+![K8s Resources](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/K8s_Resources.png)
 
 **Verification Command:**
 ```bash
@@ -209,7 +209,7 @@ kubectl get all -n default -o wide
 
 ### 10. Network Policies Enforcement
 
-![Network Policies](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Networkpolices.png)
+![Network Policies](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/Networkpolices.png)
 
 **Verification Command:**
 ```bash
@@ -231,7 +231,7 @@ Three policies enforced:
 
 ### 11. OPA/Conftest Policy Validation
 
-![OPA-Conftest](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/OPA-Conftest.png)
+![OPA-Conftest](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/OPA-Conftest.png)
 
 **Verification Command:**
 ```bash
@@ -255,7 +255,7 @@ conftest test kubernetes/*.yaml -p kubernetes/policies/
 
 ### 12. Vault Secret Management
 
-![Vault Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/vault-status.png)
+![Vault Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/Docs/images/vault-status.png)
 
 **Verification Command:**
 ```bash
@@ -393,8 +393,12 @@ kubectl port-forward svc/tic-tac-toe 8080:80
 ## 💾 Repository Structure
 
 ```
-.
-├── docs/
+devsecops-reference-infrastructure/
+├── .github/
+│   └── workflows/                   # CI/CD Pipeline
+│       ├── pipeline.yml
+│       └── README.md
+├── Docs/
 │   ├── images/
 │   │   ├── Architecture_image.png
 │   │   ├── Application.png
@@ -411,20 +415,45 @@ kubectl port-forward svc/tic-tac-toe 8080:80
 │   │   └── vault-status.png
 │   ├── PROJECT-DOCUMENTATION.md    # Detailed technical documentation
 │   └── SCREENSHOTS-GUIDE.md         # Guide for adding screenshots
-├── .github/workflows/               # CI/CD Pipeline
+├── argocd/                          # Argo CD manifests
+│   └── application.yaml
+├── falco/                           # Falco security rules
 ├── infrastructure/                  # Terraform Infrastructure as Code
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── terraform.tfvars
 ├── kubernetes/                      # Kubernetes manifests
 │   ├── deployment-secure.yaml
 │   ├── network-policy.yaml
+│   ├── service.yaml
+│   ├── ingress.yaml
+│   ├── README.md
 │   ├── vault/
 │   ├── falco/
 │   └── datadog/
-├── argocd/
-│   └── application.yaml            # Argo CD GitOps application
 ├── src/                             # React application source
+│   ├── components/
+│   ├── pages/
 │   ├── telemetry/                  # OpenTelemetry instrumentation
-│   └── utils/
-└── README.md                        # This file
+│   ├── utils/
+│   ├── App.tsx
+│   ├── index.tsx
+│   └── vite-env.d.ts
+├── dist/                            # Built application
+├── node_modules/                    # Dependencies
+├── .dockerignore
+├── .gitignore
+├── Dockerfile
+├── Dockerfile.secure
+├── README.md                        # This file
+├── package.json
+├── package-lock.json
+├── tailwind.config.js
+├── tsconfig.json
+├── vite.config.ts
+├── nginx.conf
+└── eslint.config.js
 ```
 
 ---
@@ -433,8 +462,8 @@ kubectl port-forward svc/tic-tac-toe 8080:80
 
 For comprehensive explanation of architecture, implementation details, and interview preparation:
 
-- **[docs/PROJECT-DOCUMENTATION.md](docs/PROJECT-DOCUMENTATION.md)** - Deep technical documentation with 10 interview Q&A
-- **[docs/SCREENSHOTS-GUIDE.md](docs/SCREENSHOTS-GUIDE.md)** - Guide for properly adding screenshots to GitHub
+- **[Docs/PROJECT-DOCUMENTATION.md](Docs/PROJECT-DOCUMENTATION.md)** - Deep technical documentation with 10 interview Q&A
+- **[Docs/SCREENSHOTS-GUIDE.md](Docs/SCREENSHOTS-GUIDE.md)** - Guide for properly adding screenshots to GitHub
 
 ---
 
@@ -547,5 +576,5 @@ This project is licensed under the MIT License - see LICENSE file for details.
 ## 🙋 Questions?
 
 For detailed explanations of how everything works, see:
-- **[docs/PROJECT-DOCUMENTATION.md](docs/PROJECT-DOCUMENTATION.md)** - Complete architecture explanation, each feature detailed, and 10 interview questions with answers
-- **[docs/SCREENSHOTS-GUIDE.md](docs/SCREENSHOTS-GUIDE.md)** - Guide for adding screenshots to GitHub
+- **[Docs/PROJECT-DOCUMENTATION.md](Docs/PROJECT-DOCUMENTATION.md)** - Complete architecture explanation, each feature detailed, and 10 interview questions with answers
+- **[Docs/SCREENSHOTS-GUIDE.md](Docs/SCREENSHOTS-GUIDE.md)** - Guide for adding screenshots to GitHub
