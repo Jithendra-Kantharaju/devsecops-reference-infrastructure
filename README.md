@@ -32,7 +32,7 @@ This project showcases a complete DevSecOps architecture with:
 
 ## 🏗️ Architecture Diagram
 
-![DevSecOps Architecture](docs/images/Architecture_image.png)
+![DevSecOps Architecture](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Architecture_image.png)
 
 **Architecture Overview:**
 
@@ -52,7 +52,7 @@ The diagram illustrates the complete DevSecOps flow:
 
 ### 1. Application Running Successfully
 
-![Application](docs/images/Application.png)
+![Application](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Application.png)
 
 **Status:** ✅ Application deployed and running
 - Tic-Tac-Toe game playable at `localhost:8080`
@@ -62,9 +62,9 @@ The diagram illustrates the complete DevSecOps flow:
 
 ---
 
-### 2. Argo-CD GitOps Synchronization
+### 2. Argo CD GitOps Synchronization
 
-![Argo CD](docs/images/Argocd.png)
+![Argo CD](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Argocd.png)
 
 **Verification Command:**
 ```bash
@@ -80,7 +80,7 @@ kubectl -n argocd get application tic-tac-toe
 
 ### 3. AWS EKS Cluster Status
 
-![AWS EKS](docs/images/AWS_EKS.png)
+![AWS EKS](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/AWS_EKS.png)
 
 **Verification Command:**
 ```bash
@@ -98,7 +98,7 @@ aws eks describe-cluster --name devsecops --query 'cluster.[name,status,version,
 
 ### 4. AWS CloudTrail Audit Logging
 
-![Cost-Ops](docs/images/Cost-Ops.png)
+![Cost-Ops](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Cost-Ops.png)
 
 **Verification Command:**
 ```bash
@@ -117,7 +117,7 @@ aws cloudtrail lookup-events --max-results 5 --output table
 
 ### 5. Deployment Status & Replicas
 
-![Deployment Status](docs/images/Deployment_Status.png)
+![Deployment Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Deployment_Status.png)
 
 **Verification Command:**
 ```bash
@@ -136,7 +136,7 @@ kubectl get deployments,pods,svc -n default
 
 ### 6. Falco Runtime Security
 
-![Falco](docs/images/Falco.png)
+![Falco](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Falco.png)
 
 **Verification Command:**
 ```bash
@@ -154,7 +154,7 @@ kubectl -n falco logs ds/falco | grep -i "unexpected process" | tail -5
 
 ### 7. GitHub Actions CI/CD Pipeline
 
-![GitOps](docs/images/GitOps.png)
+![GitOps](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/GitOps.png)
 
 **Status:** ✅ All 8 Jobs Passing
 - Security Scanning ✅ (18s)
@@ -173,7 +173,7 @@ kubectl -n falco logs ds/falco | grep -i "unexpected process" | tail -5
 
 ### 8. Jaeger Distributed Tracing
 
-![Jaeger](docs/images/Jaeger.png)
+![Jaeger](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Jaeger.png)
 
 **Verification Command:**
 ```bash
@@ -192,7 +192,7 @@ kubectl port-forward -n datadog svc/jaeger 16686:16686
 
 ### 9. Kubernetes Resources Overview
 
-![K8s Resources](docs/images/K8s_Resources.png)
+![K8s Resources](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/K8s_Resources.png)
 
 **Verification Command:**
 ```bash
@@ -209,7 +209,7 @@ kubectl get all -n default -o wide
 
 ### 10. Network Policies Enforcement
 
-![Network Policies](docs/images/Networkpolices.png)
+![Network Policies](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/Networkpolices.png)
 
 **Verification Command:**
 ```bash
@@ -231,7 +231,7 @@ Three policies enforced:
 
 ### 11. OPA/Conftest Policy Validation
 
-![OPA-Conftest](docs/images/OPA-Conftest.png)
+![OPA-Conftest](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/OPA-Conftest.png)
 
 **Verification Command:**
 ```bash
@@ -255,7 +255,7 @@ conftest test kubernetes/*.yaml -p kubernetes/policies/
 
 ### 12. Vault Secret Management
 
-![Vault Status](docs/images/vault-status.png)
+![Vault Status](https://raw.githubusercontent.com/Jithendra-Kantharaju/devsecops-reference-infrastructure/main/docs/images/vault-status.png)
 
 **Verification Command:**
 ```bash
